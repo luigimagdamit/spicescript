@@ -3,7 +3,7 @@ from Token import Token
 from TokenType import TokenType
 import os
 a = Scanner()
-file = open("test.mood","r+").read()
+file = open("test.ispice","r+").read()
 
 class Variable():
     def __init__(self, name, value, type) -> None:
