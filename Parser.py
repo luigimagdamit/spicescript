@@ -1,6 +1,7 @@
 from Scanner import Scanner
 from Token import Token
 from TokenType import TokenType
+import os
 a = Scanner()
 file = open("test.mood","r+").read()
 
@@ -31,6 +32,8 @@ class Parser():
         return self.stack.pop()
     
     def parseTokens(self):
+        if self.scanner.getTokens()[0].type != TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
+            quit()
         token: Token
         for token in self.scanner.getTokens():
             if token.type == TokenType.STRING:
@@ -38,6 +41,7 @@ class Parser():
                     self.add(token)
                 elif token.content in self.memory:
                     retrievedVariable = self.memory[token.content].toToken()
+                    retrievedVariable.lexeme = token.content
                     self.add(retrievedVariable)
             elif token.type == TokenType.INT:
                 self.add(token)
@@ -65,10 +69,8 @@ class Parser():
             elif token.type == TokenType.GRAB:
                 index = self.getTop()
                 arr = self.getTop()
-                print(index.content)
                 arrAccess = self.memory[name].value
                 grabbed = (arrAccess[int(index.content)])
-                print(grabbed)
 
                 self.add(grabbed.toToken())
                 # we need a type conversion for grabbed
@@ -97,6 +99,12 @@ class Parser():
             #         self.add(node1)
             #     else:
             #         continue
+            elif token.type == TokenType.HOLD_ON:
+                s2 = self.getTop()
+                s1 = self.getTop()
+
+                concatToken = Token(s1.content + " " + s2.content, s1.content + " " + s2.content, TokenType.STRING)
+                self.add(concatToken)
             elif token.type == TokenType.GRAH:
                 top = self.getTop()
                 print("GRAH!")
@@ -106,21 +114,20 @@ class Parser():
                 top = self.getTop()
                 value = top.content
                 type = top.type
-                name = self.getTop().content
+                name = self.getTop().lexeme
 
                 self.memory[name] =  Variable(name, value, type)
             elif token.type == TokenType.DAMN:
                 num1 = self.getTop()
                 num2 = self.getTop()
-                print(num1)
-                print(num2)
                 if num1.content == num2.content:
                     print("in ha mood")
                     self.add(Token("in ha mood", "in ha mood", TokenType.IN_HA_MOOD))
                 else:
                     print("boys a liar")
                     self.add(Token("boys a liar", "boys a liar", TokenType.BOYS_A_LIAR))
-
+            elif token.type == TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
+                print("SPICESCRIPT v0.1 -- " + os.getcwd())
             elif token.type == TokenType.PLUS:
                 num1 = self.getTop().content
                 num2 = self.getTop().content

@@ -30,4 +30,8 @@ class TokenType(Enum):
     THEN = 19
     DUHDUHDUH = 20
 
+    HOLD_ON = 21
+
+    YOU_THOUGHT_I_WAS_FEELIN_YOU = 22
+
 
