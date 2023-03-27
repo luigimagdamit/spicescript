@@ -1,6 +1,6 @@
-# Ice Spice Programming Language
+# Spicescript
 
-The Ice Spice programming language is a language designed to emulate the speaking style of the artist "Ice Spice." This language is intended to be used for fun and entertainment purposes only, and is not intended for serious programming projects.
+The Spicescript programming language is a language designed to emulate the speaking style of the artist "Ice Spice." This language is intended to be used for fun and entertainment purposes only, and is not intended for serious programming projects.
 
 ## Syntax
 
