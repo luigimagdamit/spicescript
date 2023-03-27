@@ -24,4 +24,10 @@ class TokenType(Enum):
     DAMN = 15
     ARRAY = 16
 
+    GRAB = 17
+    SNEAK = 18
+
+    THEN = 19
+    DUHDUHDUH = 20
+
 

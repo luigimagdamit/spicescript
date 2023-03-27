@@ -47,6 +47,15 @@ class Scanner:
             elif lexeme == "munch":
                 newToken = Token("munch", "munch", TokenType.MUNCH)
                 self.tokenList.append(newToken)
+            elif lexeme == "grab":
+                newToken = Token("grab", "grab", TokenType.GRAB)
+                self.tokenList.append(newToken)
+            elif lexeme == "then":
+                newToken = Token("then", "then", TokenType.THEN)
+                self.tokenList.append(newToken)
+            elif lexeme == "duhduhduh":
+                newToken = Token("duhduhduh", "duhduhduh", TokenType.DUHDUHDUH)
+                self.tokenList.append(newToken)
             elif lexeme.isdigit():
                 newToken = Token(lexeme, lexeme, TokenType.INT)
                 self.tokenList.append(newToken)

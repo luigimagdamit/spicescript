@@ -51,9 +51,10 @@ class Parser():
                 top = self.getTop()
                 arr = self.getTop()
                 name = arr.lexeme
+                newVar = Variable(top.content, top.content, top.type)
                 print("NAME" + name)
                 arrAccess = self.memory[name].value
-                arrAccess.append(top.content)
+                arrAccess.append(newVar)
             elif token.type == TokenType.MUNCH:
                 top = self.getTop()
                 arr = self.getTop()
@@ -61,7 +62,41 @@ class Parser():
                 print("NAME" + name)
                 arrAccess = self.memory[name].value
                 arrAccess.remove(top.content)
+            elif token.type == TokenType.GRAB:
+                index = self.getTop()
+                arr = self.getTop()
+                print(index.content)
+                arrAccess = self.memory[name].value
+                grabbed = (arrAccess[int(index.content)])
+                print(grabbed)
 
+                self.add(grabbed.toToken())
+                # we need a type conversion for grabbed
+            elif token.type == TokenType.THEN:
+                eval = self.getTop()
+                if eval.type != TokenType.BOYS_A_LIAR:
+                    continue
+                if eval.type == TokenType.BOYS_A_LIAR:
+                    curr_index = (self.scanner.getTokens().index(token))
+                    next_index = curr_index + 1
+                    flag = 0
+                    while flag == 0:
+                        next_token = self.scanner.getTokens()[next_index]
+                        if next_token.type == TokenType.DUHDUHDUH:
+                            flag = 1
+                        else:
+                            del self.scanner.getTokens()[next_index]
+                    # del self.scanner.getTokens()[next_index]
+
+            # elif token.type == TokenType.DUHDUHDUH:
+            #     print(self.stack)
+            #     node1 = self.getTop()
+            #     eval = self.getTop()
+
+            #     if eval.content == "in_ha_mood":
+            #         self.add(node1)
+            #     else:
+            #         continue
             elif token.type == TokenType.GRAH:
                 top = self.getTop()
                 print("GRAH!")
