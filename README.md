@@ -1,6 +1,6 @@
-# Spicescript
+# Ice Spice Programming Language
 
-The Spicescript programming language is a language designed to emulate the musical style of the artist "Ice Spice." This language is intended to be used for fun and entertainment purposes only, and is not intended for serious programming projects.
+The Ice Spice programming language is a language designed to emulate the speaking style of the artist "Ice Spice." This language is intended to be used for fun and entertainment purposes only, and is not intended for serious programming projects.
 
 ## Syntax
 
@@ -18,6 +18,18 @@ The syntax of the Ice Spice programming language is designed to be similar to th
 
 Here is an example program in the Ice Spice programming language. Also note that the program file requires the header ``you_thought_i_was_feelin_u?``or else it will not run.
 
+Without annotation:
+```
+you_thought_i_was_feelin_u?
+
+soni hello world hold_on 
+like
+soni in_ha_mood like
+( soni that boys_a_liar ) damn 
+then anthony in_ha_mood like a duhduhduh
+( soni grah )
+```
+With annotation:
 ```
 you_thought_i_was_feelin_u?
 ### mandatory header
