@@ -22,5 +22,6 @@ class TokenType(Enum):
     BOYS_A_LIAR = 14
 
     DAMN = 15
+    ARRAY = 16
 
 

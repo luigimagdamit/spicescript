@@ -43,6 +43,25 @@ class Parser():
                 self.add(token)
             elif token.type == TokenType.IN_HA_MOOD:
                 self.add(token)
+            elif token.type == TokenType.BOYS_A_LIAR:
+                self.add(token)
+            elif token.type == TokenType.ARRAY:
+                self.add(token)
+            elif token.type == TokenType.EAT_IT_FOR_LUNCH:
+                top = self.getTop()
+                arr = self.getTop()
+                name = arr.lexeme
+                print("NAME" + name)
+                arrAccess = self.memory[name].value
+                arrAccess.append(top.content)
+            elif token.type == TokenType.MUNCH:
+                top = self.getTop()
+                arr = self.getTop()
+                name = arr.lexeme
+                print("NAME" + name)
+                arrAccess = self.memory[name].value
+                arrAccess.remove(top.content)
+
             elif token.type == TokenType.GRAH:
                 top = self.getTop()
                 print("GRAH!")
@@ -56,12 +75,17 @@ class Parser():
 
                 self.memory[name] =  Variable(name, value, type)
             elif token.type == TokenType.DAMN:
-                num1 = self.getTop().type
-                num2 = self.getTop().type
-                
-                if num1 == num2:
+                num1 = self.getTop()
+                num2 = self.getTop()
+                print(num1)
+                print(num2)
+                if num1.content == num2.content:
                     print("in ha mood")
                     self.add(Token("in ha mood", "in ha mood", TokenType.IN_HA_MOOD))
+                else:
+                    print("boys a liar")
+                    self.add(Token("boys a liar", "boys a liar", TokenType.BOYS_A_LIAR))
+
             elif token.type == TokenType.PLUS:
                 num1 = self.getTop().content
                 num2 = self.getTop().content
@@ -92,4 +116,4 @@ n = Parser(a)
 n.parseTokens()
 # print(n.memory)
 n.printMemory()
-# n.printStack()
+n.printStack()

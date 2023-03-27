@@ -1,6 +1,5 @@
 # line = ["munch", "[]", "like", "munch", "3", "eat_it_for_lunch", "munch", "56", "eat_it_for_lunch"]
 file = open("test.mood","r+").read()
-print(file)
 inp = "bruh [] like bruh baddie eat_it_for_lunch bruh baddie munch"
 # line = ["test", "5", "6", "bite", "like", "test2", "BOYS_A_LIAR", "like", "test", "test2", "bite"]
 line = file.split()
@@ -67,3 +66,5 @@ for i in line:
             stack.append(memory[i])
         elif i in memory and isinstance(memory[i], list) == True:
             stack.append(i)
+
+print(memory)

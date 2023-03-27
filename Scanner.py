@@ -30,10 +30,22 @@ class Scanner:
                 newToken = Token("grah", "", TokenType.GRAH)
                 self.tokenList.append(newToken)
             elif lexeme == "in_ha_mood":
-                newToken = Token("in ha mood", "in ha mood", TokenType.IN_HA_MOOD)
+                newToken = Token("in_ha_mood", "in_ha_mood", TokenType.IN_HA_MOOD)
+                self.tokenList.append(newToken)
+            elif lexeme == "boys_a_liar":
+                newToken = Token("boys_a_liar", "boys_a_liar", TokenType.BOYS_A_LIAR)
                 self.tokenList.append(newToken)
             elif lexeme == "damn":
                 newToken = Token("damn", "", TokenType.DAMN)
+                self.tokenList.append(newToken)
+            elif lexeme == "[]":
+                newToken = Token("[]", [], TokenType.ARRAY)
+                self.tokenList.append(newToken)
+            elif lexeme == "eat_it_for_lunch":
+                newToken = Token("eat_it_for_lunch", "eat_it_for_lunch", TokenType.EAT_IT_FOR_LUNCH)
+                self.tokenList.append(newToken)
+            elif lexeme == "munch":
+                newToken = Token("munch", "munch", TokenType.MUNCH)
                 self.tokenList.append(newToken)
             elif lexeme.isdigit():
                 newToken = Token(lexeme, lexeme, TokenType.INT)
