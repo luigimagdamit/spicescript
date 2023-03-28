@@ -1,10 +1,11 @@
-# Spicescript
+# Ice Spice Programming Language
 
-The Spicescript programming language is a language designed to emulate the speaking style of the artist "Ice Spice." This language is intended to be used for fun and entertainment purposes only, and is not intended for serious programming projects.
+Spicescript is a language designed to emulate the lyrical style of the artist "Ice Spice." This language is intended to be used for fun and entertainment purposes only, and is not intended for serious programming projects.
 
+![Ice Spice Logo](https://i.imgur.com/C8Q8RxT.jpg)
 ## Syntax
 
-The syntax of the Ice Spice programming language is designed to be similar to the way Ice Spice speaks in her music and interviews. Here is an overview of the language syntax:
+The syntax of Spicescript is designed with phrases commonly seen in Ice Spice's songs.
 
 - The language is inspired by RPN and Forth, meaning that most operations occur as postfix.
 - Variables are declared with the keyword "like".
