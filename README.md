@@ -21,6 +21,14 @@ boy anteater he eat_it_for_lunch ( grah )
   
 
 ![Ice Spice Logo](https://i.imgur.com/C8Q8RxT.jpg)
+## Features
+- Dynamic typing
+- Interpreted language
+- Open source
+- Fun to read
+- Whitespace-agnostic
+- Dynamic memory allocation
+- Ice Spice syntax
 ## Installation 
 To use this language, extract the contents from the file after using this command in your terminal.
 ```
