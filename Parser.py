@@ -5,6 +5,8 @@ import os
 a = Scanner()
 file = open("test.mood","r+").read()
 
+if file.split()[0] != "you_thought_i_was_feelin_u?":
+    quit()
 class Variable():
     def __init__(self, name, value, type) -> None:
         self.name = name
@@ -71,6 +73,7 @@ class Parser():
                 grabbed = (arrAccess[int(index.content)])
 
                 self.add(grabbed.toToken())
+
                 # we need a type conversion for grabbed
             elif token.type == TokenType.THEN:
                 eval = self.getTop()
@@ -118,10 +121,8 @@ class Parser():
                 num1 = self.getTop()
                 num2 = self.getTop()
                 if num1.content == num2.content:
-                    print("in ha mood")
                     self.add(Token("in ha mood", "in ha mood", TokenType.IN_HA_MOOD))
                 else:
-                    print("boys a liar")
                     self.add(Token("boys a liar", "boys a liar", TokenType.BOYS_A_LIAR))
             elif token.type == TokenType.HIT_WONDER:
                 end = int(self.getTop().content)
