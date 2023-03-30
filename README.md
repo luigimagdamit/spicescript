@@ -66,14 +66,14 @@ bar orange like
 Use the keyword ``hold_on`` to combine strings:
 ```
 greeting 
-	hello world! hold_on 
+  hello world! hold_on 
 like
 ```
 ## Printing
 Use the keyword ``grah`` to print.
 ```
 greeting 
-	hello world? hold_on 
+  hello world? hold_on 
 like 
 
 greeting ( grah )
@@ -108,7 +108,7 @@ Conditionals will start with a boolean followed by the keyword ``then`` with the
 ```
 # does not execute
 boys_a_liar then 
-	hello! ( grah )
+  hello! ( grah )
 duhduhduh 
 
 # executes and prints hello world
@@ -138,12 +138,12 @@ This language has functionality with simple finite loops in the form of ``hit_wo
 you_thought_i_was_feelin_u?
 
 0 10 hit_wonder 
-	yuh! ( grah )
+  yuh! ( grah )
 duhduhduh
 
 baddies [] like
 0 10 hit_wonder 
-	baddies me eat_it_for_lunch 
+  baddies me eat_it_for_lunch 
 duhduhduh
 
 baddies ( grah )
@@ -155,8 +155,8 @@ you_thought_i_was_feelin_u?
 
 count 0 like
 0 10 hit_wonder 
-    count ( count 1 + ) like 
-    count ( grah )
+  count ( count 1 + ) like 
+  count ( grah )
 duhduhduh
 ```
 
@@ -167,10 +167,10 @@ count 0 like
 baddies [] like
 
 0 10 hit_wonder 
-    count ( count 1 + ) like 
-    i count 1 - like
-    i grah
-    baddies i eat_it_for_lunch
+  count ( count 1 + ) like 
+  i count 1 - like
+  i grah
+  baddies i eat_it_for_lunch
 duhduhduh
 
 baddies ( grah )
@@ -179,7 +179,7 @@ count 0 like
 \n ( grah )
 
 0 10 hit_wonder 
-    baddies 0 munch
+  baddies 0 munch
 duhduhduh
 
 baddies grah
