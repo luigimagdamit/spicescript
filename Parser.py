@@ -32,8 +32,8 @@ class Parser():
         return self.stack.pop()
     
     def parseTokens(self):
-        if self.scanner.getTokens()[0].type != TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
-            quit()
+        # if self.scanner.getTokens()[0].type != TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
+        #     continue
         token: Token
         for token in self.scanner.getTokens():
             if token.type == TokenType.STRING:
@@ -56,17 +56,13 @@ class Parser():
                 arr = self.getTop()
                 name = arr.lexeme
                 newVar = Variable(top.content, top.content, top.type)
-                print("NAME" + name)
                 arrAccess = self.memory[name].value
                 arrAccess.append(newVar)
             elif token.type == TokenType.MUNCH:
                 top = self.getTop()
                 arr = self.getTop()
                 name = arr.lexeme
-                print("NAME" + str(top))
-                print(arr)
                 arrAccess = self.memory[name].value
-                print(arrAccess)
                 del arrAccess[int(top.content)]
             elif token.type == TokenType.GRAB:
                 index = self.getTop()
@@ -92,15 +88,6 @@ class Parser():
                             del self.scanner.getTokens()[next_index]
                     # del self.scanner.getTokens()[next_index]
 
-            # elif token.type == TokenType.DUHDUHDUH:
-            #     print(self.stack)
-            #     node1 = self.getTop()
-            #     eval = self.getTop()
-
-            #     if eval.content == "in_ha_mood":
-            #         self.add(node1)
-            #     else:
-            #         continue
             elif token.type == TokenType.HOLD_ON:
                 s2 = self.getTop()
                 s1 = self.getTop()
@@ -111,13 +98,14 @@ class Parser():
                 top = self.getTop()
                 print("GRAH!")
                 
-                print(top.content.__class__)
 
                 if top.content.__class__ == list:
                     print("[", end=" ")
                     for element in top.content:
                         print(str(element.value), end = " ")
                     print("]", end=" ")
+                else:
+                    print(top.content)
 
             elif token.type == TokenType.LIKE:
                 top = self.getTop()
@@ -135,6 +123,29 @@ class Parser():
                 else:
                     print("boys a liar")
                     self.add(Token("boys a liar", "boys a liar", TokenType.BOYS_A_LIAR))
+            elif token.type == TokenType.HIT_WONDER:
+                end = int(self.getTop().content)
+                start = int(self.getTop().content)
+
+                local_tokens = []
+                curr_index = (self.scanner.getTokens().index(token))
+                next_index = curr_index + 1
+
+                flag = 0
+                while flag == 0:
+                    next_token = self.scanner.getTokens().pop(next_index)
+                    if next_token.type == TokenType.DUHDUHDUH:
+                        flag = 1
+                    else:
+                        local_tokens.append(next_token)
+                for i in range(start, end):
+                    b = Scanner()
+                    localParser = Parser(b)
+                    localParser.memory = self.memory
+                    localParser.scanner.tokenList = local_tokens
+                    localParser.parseTokens()
+
+                
             elif token.type == TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
                 print("SPICESCRIPT v0.1 -- " + os.getcwd())
             elif token.type == TokenType.PLUS:

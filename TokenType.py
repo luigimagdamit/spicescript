@@ -33,5 +33,6 @@ class TokenType(Enum):
     HOLD_ON = 21
 
     YOU_THOUGHT_I_WAS_FEELIN_YOU = 22
+    HIT_WONDER = 23
 
 

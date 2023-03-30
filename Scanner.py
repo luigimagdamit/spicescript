@@ -62,6 +62,9 @@ class Scanner:
             elif lexeme == "you_thought_i_was_feelin_u?":
                 newToken = Token(lexeme, lexeme, TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU)
                 self.tokenList.append(newToken)
+            elif lexeme == "hit_wonder":
+                newToken = Token(lexeme, lexeme, TokenType.HIT_WONDER)
+                self.tokenList.append(newToken)
             elif lexeme in ["(", ")", "[", "]", "{", "}", "a", "that"]:
                 continue
             elif lexeme.isdigit():
