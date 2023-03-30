@@ -1,15 +1,14 @@
-from typing import List
+
 from Token import Token
 from TokenType import TokenType
 
 class Scanner:
-    def __init__(self) -> None:
-        self.initialStrList: List[str] = []
-        self.tokenList: List[Token] = []
-    def initiate(self, stringArray: List[str]):
+    def __init__(self):
+        self.initialStrList = []
+        self.tokenList = []
+    def initiate(self, stringArray):
         self.initialStrList = stringArray
     def populate(self):
-        lexeme: str
         for lexeme in self.initialStrList:
             if lexeme == "+":
                 newToken = Token("+", "+", TokenType.PLUS)

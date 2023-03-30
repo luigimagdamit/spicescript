@@ -6,18 +6,18 @@ a = Scanner()
 file = open("test.ispice","r+").read()
 
 class Variable():
-    def __init__(self, name, value, type) -> None:
+    def __init__(self, name, value, type):
         self.name = name
         self.value = value
         self.type = type
 
-    def __str__(self) -> str:
+    def __str__(self):
         return "VAR_NAME " + str(self.name) + " VAR_VALUE " + str(self.value) + " VAR_TYPE " + str(self.type)
     def toToken(self):
         return Token(self.name, self.value, self.type)
 
 class Parser():
-    def __init__(self, scanner: Scanner) -> None:
+    def __init__(self, scanner):
         self.scanner = scanner
         self.scanner.initiate(file.split())
         self.scanner.populate()
@@ -34,7 +34,6 @@ class Parser():
     def parseTokens(self):
         if self.scanner.getTokens()[0].type != TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
             quit()
-        token: Token
         for token in self.scanner.getTokens():
             if token.type == TokenType.STRING:
                 if token.content not in self.memory:
@@ -142,6 +141,13 @@ class Parser():
                 res = int(num1) - int(num2)
                 newMinusToken = Token(num1 + " - " + num2, res, TokenType.INT)
                 self.stack.append(newMinusToken)
+            elif token.type == TokenType.MULTIPLY:
+                num2 = self.getTop().content
+                num1 = self.getTop().content
+                
+                res = int(num1) - int(num2)
+                newMultiplyToken = Token(num1 + " * " + num2, res, TokenType.INT)
+                self.stack.append(newMultiplyToken)
 
     def printStack(self):
         for token in self.stack:
@@ -155,6 +161,7 @@ class Parser():
 
 n = Parser(a)
 # n.scanner.showTokens()
+print(n.parseTokens())
 n.parseTokens()
 # print(n.memory)
 n.printMemory()
