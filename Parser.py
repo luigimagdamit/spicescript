@@ -2,11 +2,13 @@ from Scanner import Scanner
 from Token import Token
 from TokenType import TokenType
 import os
+import contextlib
 a = Scanner()
 file = open("test.mood","r+").read()
 
 if file.split()[0] != "you_thought_i_was_feelin_u?":
     quit()
+
 class Variable():
     def __init__(self, name, value, type) -> None:
         self.name = name
@@ -32,7 +34,12 @@ class Parser():
 
     def getTop(self):
         return self.stack.pop()
-    
+    def printStack(self):
+        for token in self.stack:
+            print(token)
+    def printMemory(self):
+        for variable in self.memory:
+            print(self.memory[variable])
     def parseTokens(self):
         # if self.scanner.getTokens()[0].type != TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
         #     continue
@@ -148,7 +155,7 @@ class Parser():
 
                 
             elif token.type == TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
-                print("SPICESCRIPT v0.1 -- " + os.getcwd())
+                print("\n" + "SPICESCRIPT v0.1 -- " + os.getcwd() + "\n\n")
             elif token.type == TokenType.PLUS:
                 num1 = self.getTop().content
                 num2 = self.getTop().content
@@ -170,19 +177,23 @@ class Parser():
                 res = int(num1) - int(num2)
                 newMultiplyToken = Token(num1 + " * " + num2, res, TokenType.INT)
                 self.stack.append(newMultiplyToken)
-
-    def printStack(self):
-        for token in self.stack:
-            print(token)
-    def printMemory(self):
-        for variable in self.memory:
-            print(self.memory[variable])
+            elif token.type == TokenType.MULTIPLY:
+                num2 = self.getTop().content
+                num1 = self.getTop().content
+                
+                res = int(num1) - int(num2)
+                newMultiplyToken = Token(num1 + " / " + num2, res, TokenType.INT)
+                self.stack.append(newMultiplyToken)
             
                 
 
 
 n = Parser(a)
 # n.scanner.showTokens()
+# path = './file.txt'
+# with open(path, 'w') as f:
+#     with contextlib.redirect_stdout(f):
+#         n.parseTokens()
 n.parseTokens()
 # print(n.memory)
 # n.printMemory()
