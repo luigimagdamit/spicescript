@@ -16,7 +16,14 @@ class Variable():
         self.type = type
 
     def __str__(self) -> str:
-        return "VAR_NAME " + str(self.name) + " VAR_VALUE " + str(self.value) + " VAR_TYPE " + str(self.type)
+        return (
+                    "VAR_NAME " 
+                    + str(self.name) 
+                    + " VAR_VALUE " 
+                    + str(self.value) 
+                    + " VAR_TYPE " 
+                    + str(self.type)
+        )
     def toToken(self):
         return Token(self.name, self.value, self.type)
 
@@ -61,21 +68,23 @@ class Parser():
             elif token.type == TokenType.ARRAY:
                 self.add(token)
             elif token.type == TokenType.EAT_IT_FOR_LUNCH:
-                top = self.getTop()
-                arr = self.getTop()
+                top, arr = self.getTop(), self.getTop()
                 name = arr.lexeme
-                newVar = Variable(top.content, top.content, top.type)
+                newVar = Variable(
+                    top.content, 
+                    top.content, 
+                    top.type
+                )
                 arrAccess = self.memory[name].value
                 arrAccess.append(newVar)
             elif token.type == TokenType.MUNCH:
-                top = self.getTop()
-                arr = self.getTop()
+                top, arr = self.getTop(), self.getTop()
                 name = arr.lexeme
                 arrAccess = self.memory[name].value
                 del arrAccess[int(top.content)]
             elif token.type == TokenType.GRAB:
-                index = self.getTop()
-                arr = self.getTop()
+                index, arr = self.getTop(), self.getTop()
+                name = arr.lexeme
                 arrAccess = self.memory[name].value
                 grabbed = (arrAccess[int(index.content)])
 
@@ -84,10 +93,11 @@ class Parser():
                 # we need a type conversion for grabbed
             elif token.type == TokenType.THEN:
                 eval = self.getTop()
-                if eval.type != TokenType.BOYS_A_LIAR:
-                    continue
                 if eval.type == TokenType.BOYS_A_LIAR:
-                    curr_index = (self.scanner.getTokens().index(token))
+                    curr_index = (self.scanner
+                                    .getTokens()
+                                    .index(token)
+                    )
                     next_index = curr_index + 1
                     flag = 0
                     while flag == 0:
@@ -99,16 +109,20 @@ class Parser():
                     # del self.scanner.getTokens()[next_index]
 
             elif token.type == TokenType.HOLD_ON:
-                s2 = self.getTop()
-                s1 = self.getTop()
+                s2, s1 = self.getTop(), self.getTop()
 
-                concatToken = Token(s1.content + " " + s2.content, s1.content + " " + s2.content, TokenType.STRING)
+                concatToken = Token(s1.content 
+                                        + " " 
+                                        + s2.content, 
+                                    s1.content 
+                                        + " " 
+                                        + s2.content,
+                                     TokenType.STRING
+                )
                 self.add(concatToken)
             elif token.type == TokenType.GRAH:
                 top = self.getTop()
-                print("GRAH!")
                 
-
                 if top.content.__class__ == list:
                     print("[", end=" ")
                     for element in top.content:
@@ -128,15 +142,30 @@ class Parser():
                 num1 = self.getTop()
                 num2 = self.getTop()
                 if num1.content == num2.content:
-                    self.add(Token("in ha mood", "in ha mood", TokenType.IN_HA_MOOD))
+                    self.add(
+                        Token(
+                            "in ha mood", 
+                            "in ha mood", 
+                            TokenType.IN_HA_MOOD
+                        )
+                )
                 else:
-                    self.add(Token("boys a liar", "boys a liar", TokenType.BOYS_A_LIAR))
+                    self.add(
+                        Token(
+                            "boys a liar", 
+                            "boys a liar", 
+                            TokenType.BOYS_A_LIAR
+                        )
+                )
             elif token.type == TokenType.HIT_WONDER:
                 end = int(self.getTop().content)
                 start = int(self.getTop().content)
 
                 local_tokens = []
-                curr_index = (self.scanner.getTokens().index(token))
+                curr_index = (self.scanner
+                                .getTokens()
+                                .index(token)
+                )
                 next_index = curr_index + 1
 
                 flag = 0
@@ -168,14 +197,19 @@ class Parser():
                 num1 = self.getTop().content
                 
                 res = int(num1) - int(num2)
-                newMinusToken = Token(num1 + " - " + num2, res, TokenType.INT)
+                newMinusToken = Token(str(num1) + " - " + str(num2), res, TokenType.INT)
                 self.stack.append(newMinusToken)
             elif token.type == TokenType.MULTIPLY:
                 num2 = self.getTop().content
                 num1 = self.getTop().content
                 
                 res = int(num1) - int(num2)
-                newMultiplyToken = Token(num1 + " * " + num2, res, TokenType.INT)
+                newMultiplyToken = Token(num1 
+                                            + " * " 
+                                            + num2, 
+                                        res, 
+                                        TokenType.INT
+                )
                 self.stack.append(newMultiplyToken)
             elif token.type == TokenType.MULTIPLY:
                 num2 = self.getTop().content

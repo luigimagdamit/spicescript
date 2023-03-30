@@ -5,7 +5,9 @@
 
 Spicescript is a stack-based esoteric programming language designed to emulate the lyrical style of the artist "Ice Spice." Just like Ice Spice is revolutionizing the rap game, this project is intended to revolutionize the world of esoteric programming languages. The language is inspired by RPN and Forth, meaning that most operations occur as postfix. Functionally, all of the operations occur on a stack. 
 
-The goal of SpiceScript is not to write functional code, but rather to write code that closely resembles Ice Spice lyrics. But it is possible to write functional code, as it is nearly Turing-Complete. Here's an example of functional and running code in IceScript:
+The goal of SpiceScript is not to write functional code, but rather to write code that closely resembles Ice Spice lyrics. "IceSpythonic", if you will.
+
+ But it is possible to write functional code, as it is nearly Turing-Complete. Here's an example of functional and running code in IceScript:
 ```
 you_thought_i_was_feelin_u?
 
@@ -35,7 +37,7 @@ To use this language, extract the contents from the file after using this comman
 git clone https://github.com/luigimagdamit/spicescript.git
 ```
 ## Usage
-Modify the contents of ``test.mood`` using the syntax provided below.
+Modify the contents of ``test.mood`` using the syntax provided below. After making said adjustments, go ahead and run ``Parser.py``
 ##  Syntax
 
   
@@ -52,22 +54,29 @@ Files are in the extension `.mood` and must have ``you_thought_i_was_feelin_u?``
 ```
 you_thought_i_was_feelin_u?
 
-hello grah
+hello! ( grah )
 ```
 ##  Variable Declaration
 Use the keyword ``like`` to declare a variable. Here is an example. Variables must either be integer numbers or strings without white space, because Ice Spice concise. 
-```foo 10 like```
-``bar 20 like``
+```
+foo 10 like
+bar orange like
+```
 ##  String Concatenation
 Use the keyword ``hold_on`` to combine strings:
 ```
-greeting hello world hold_on like
-greeting grah
+greeting 
+	hello world! hold_on 
+like
 ```
 ## Printing
 Use the keyword ``grah`` to print.
 ```
-greeting hello world hold_on like grah
+greeting 
+	hello world? hold_on 
+like 
+
+greeting ( grah )
 ```
 ##  Boolean Variables
 Booleans take the form of either ``in_ha_mood`` for ``True`` or ``boys_a_liar`` for ``False``
@@ -88,36 +97,91 @@ god in_ha_mood like
 bad boys_a_liar like 
 # sets bad = boys_a_liar
 
-she in_ha_mood damn 
+she in_ha_mood ( damn )
 # compares "she" and in_ha_mood and returns in_ha_mood
 
-the boys_a_liar god damn like grah
+the boys_a_liar god damn like ( grah )
 # sets a variable named "the" to the result of comparing "boys_a_liar" to god and prints the resulting variable
 ```
 ## Conditionals
 Conditionals will start with a boolean followed by the keyword ``then`` with the statement following, and ending with ``duhduhduh``
 ```
-boys_a_liar then gone grah duhduhduh 
 # does not execute
+boys_a_liar then 
+	hello! ( grah )
+duhduhduh 
 
-in_ha_mood then hello world hold_on grah duhduhduh
 # executes and prints hello world
+in_ha_mood then 
+	hello world hold_on ( grah )
+duhduhduh
 ```
 ## Arrays
 You can declare an array in the following fashion:
 ```
-top_songs [] like # must always start off this way, initalizing
-top_songs song1 eat_it_for_lunch # eat_it_for_lunch appends to list
-top_songs 0 grab grah # prints the item at index
-top_songs 0 munch # munch will remove a variable at the index
+top_songs [] like 
+# must always start off this way, initalizing
+
+top_songs song1 eat_it_for_lunch 
+# eat_it_for_lunch appends to list
+
+top_songs 0 grab grah 
+# prints the item at index
+
+top_songs 0 munch 
+# munch will remove a variable at the index
 ```
 
 ## Loops
 This language has functionality with simple finite loops in the form of ``hit_wonder`` with the range preceding, the expression following and ``duhduhduh`` denoting the end of the repeating expression.
 ```
-0 10 hit_wonder yuh! grah duhduhduh
+you_thought_i_was_feelin_u?
+
+0 10 hit_wonder 
+	yuh! ( grah )
+duhduhduh
+
 baddies [] like
-0 10 hit_wonder baddies me eat_it_for_lunch duhduhduh
+0 10 hit_wonder 
+	baddies me eat_it_for_lunch 
+duhduhduh
+
+baddies ( grah )
+```
+
+### Loop Incrementing Examples
+```
+you_thought_i_was_feelin_u?
+
+count 0 like
+0 10 hit_wonder 
+    count ( count 1 + ) like 
+    count ( grah )
+duhduhduh
+```
+
+```
+you_thought_i_was_feelin_u?
+
+count 0 like
+baddies [] like
+
+0 10 hit_wonder 
+    count ( count 1 + ) like 
+    i count 1 - like
+    i grah
+    baddies i eat_it_for_lunch
+duhduhduh
+
+baddies ( grah )
+count 0 like
+
+\n ( grah )
+
+0 10 hit_wonder 
+    baddies 0 munch
+duhduhduh
+
 baddies grah
 ```
 
