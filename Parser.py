@@ -3,21 +3,21 @@ from Token import Token
 from TokenType import TokenType
 import os
 a = Scanner()
-file = open("test.ispice","r+").read()
+file = open("test.mood","r+").read()
 
 class Variable():
-    def __init__(self, name, value, type):
+    def __init__(self, name, value, type) -> None:
         self.name = name
         self.value = value
         self.type = type
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "VAR_NAME " + str(self.name) + " VAR_VALUE " + str(self.value) + " VAR_TYPE " + str(self.type)
     def toToken(self):
         return Token(self.name, self.value, self.type)
 
 class Parser():
-    def __init__(self, scanner):
+    def __init__(self, scanner: Scanner) -> None:
         self.scanner = scanner
         self.scanner.initiate(file.split())
         self.scanner.populate()
@@ -34,6 +34,7 @@ class Parser():
     def parseTokens(self):
         if self.scanner.getTokens()[0].type != TokenType.YOU_THOUGHT_I_WAS_FEELIN_YOU:
             quit()
+        token: Token
         for token in self.scanner.getTokens():
             if token.type == TokenType.STRING:
                 if token.content not in self.memory:
@@ -62,9 +63,11 @@ class Parser():
                 top = self.getTop()
                 arr = self.getTop()
                 name = arr.lexeme
-                print("NAME" + name)
+                print("NAME" + str(top))
+                print(arr)
                 arrAccess = self.memory[name].value
-                arrAccess.remove(top.content)
+                print(arrAccess)
+                del arrAccess[int(top.content)]
             elif token.type == TokenType.GRAB:
                 index = self.getTop()
                 arr = self.getTop()
@@ -108,7 +111,14 @@ class Parser():
                 top = self.getTop()
                 print("GRAH!")
                 
-                print(top.content)
+                print(top.content.__class__)
+
+                if top.content.__class__ == list:
+                    print("[", end=" ")
+                    for element in top.content:
+                        print(str(element.value), end = " ")
+                    print("]", end=" ")
+
             elif token.type == TokenType.LIKE:
                 top = self.getTop()
                 value = top.content
@@ -161,8 +171,7 @@ class Parser():
 
 n = Parser(a)
 # n.scanner.showTokens()
-print(n.parseTokens())
 n.parseTokens()
 # print(n.memory)
-n.printMemory()
-n.printStack()
+# n.printMemory()
+# n.printStack()
