@@ -120,6 +120,8 @@ baddies [] like
 0 10 hit_wonder baddies me eat_it_for_lunch duhduhduh
 baddies grah
 ```
+
+## Full Example
 Here is an example program in the Ice Spice programming language. Also note that the program file requires the header ``you_thought_i_was_feelin_u?``or else it will not run.
 
   
